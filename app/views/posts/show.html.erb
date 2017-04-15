@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div id="notice"></div>
+    <div class="col-lg-10">
+      <h1><%= @post.title %></h1>
+      <p class="lead">
+          by <a href="#"><%= @post.user.email %></a>
+      </p>
+      <hr>
+      <p><span class="glyphicon glyphicon-time"></span> Posted on <%= @post.created_at.strftime("%A %d %B %Y %I:%M%p") %> </p>
+      <hr>
+      <p class="lead"><%= @post.body.html_safe %></p>
+      <hr>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Back', posts_path %>
