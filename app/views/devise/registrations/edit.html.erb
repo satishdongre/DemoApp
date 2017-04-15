@@ -13,22 +13,25 @@
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name, autofocus: true %>
   </div>
- <div class="field">
+  <div class="field">
     <%= f.label :gender %><br />
-
-  <%= f.radio_button :gender, 'Male' %> Male<br />
+    <%= f.radio_button :gender, 'Male' %> Male<br />
     <%= f.radio_button :gender, 'Female' %> Female<br />
   </div>
 
-  <div>
-    <script>
-   $( function() {
-    $( "#datepicker" ).datepicker();
-   } );
-  </script>
+  <div class="field">
+    <%= f.label :dob, "Date of Birth" %><br />
+    <%= f.date_field :dob, autofocus: true %>
+  </div>
 
- <p> dob:<input type="text" id="datepicker"> </p>
+  <div> 
+    <%= f.label :avatar, "Profile Picture" %><br />
+    <% if current_user.avatar.present? %>
+      <%= image_tag current_user.avatar.url, size: "100x100" %>
+    <%end %> 
+    <%= f.file_field :avatar %>
 
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />

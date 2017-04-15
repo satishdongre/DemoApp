@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
-  #before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @post = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -14,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    
     @post = current_user.posts.new(post_params)
     if @post.save
       flash[:success] = "Post was successfully created"
@@ -25,7 +23,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def destroy
@@ -40,10 +37,14 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path(@post)
+      redirect_to posts_path
     else
       render :edit
     end
+  end
+
+  def your_post
+    @posts = current_user.posts
   end
 
   private

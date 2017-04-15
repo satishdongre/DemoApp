@@ -12,15 +12,12 @@
       </thead>
       <tbody>
        <% @post.each do |post| %>
-          <tr>
-                        
+          <tr>       
             <td><%= post.title %></td>
-
-    
             <td><%= post.body.html_safe%></td>
             <td><%= link_to 'Show', post_path(post) %></td>
             <td><%= link_to 'Edit', edit_post_path(post) %></td>
-             <td><%= link_to 'Destroy', post_path(post),
+            <td><%= link_to 'Destroy', post_path(post),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
           </tr>
